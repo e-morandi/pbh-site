@@ -1,0 +1,36 @@
+/* Desktop nav link — white at rest, red on hover */
+.nav-link {
+  color: rgba(255, 255, 255, 0.8);
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0.75rem;
+  right: 0.75rem;
+  height: 2px;
+  background-color: rgb(var(--color-accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav-link:hover {
+  color: white;
+}
+.nav-link:hover::after,
+.nav-link.nav-active::after {
+  transform: scaleX(1);
+}
+.nav-link.nav-active {
+  color: white;
+}
+
+/* Mobile nav link — left border accent on active */
+.mobile-nav-link:hover {
+  border-left-color: rgb(var(--color-accent));
+  background-color: rgba(255, 255, 255, 0.07);
+}
+.mobile-nav-link.mobile-nav-active {
+  border-left-color: rgb(var(--color-accent));
+  background-color: rgba(255, 255, 255, 0.1);
+}
