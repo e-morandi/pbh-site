@@ -1,18 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Inter:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme 
 {
-  --color-primary: #0c4a6e;
-  --color-primary-light: #0369a1;
-  --color-primary-dark: #082f49;
+  --color-primary: 15 23 42; /* Navy */
+  --color-secondary: 30 64 175; /* Blue */
+  --color-accent: 220 38 38; /* Red */
 
-  --color-accent: #f97316;
+  --color-text: 15 23 42;
+  --color-muted: 100 116 139;
+  --color-border: 226 232 240;
 
-  --color-surface: #ffffff;
-  --color-background: #f8fafc;
-
-  --color-text: #1e293b;
-  --color-text-light: #64748b;
+  --container-width: 1280px;
 }
+

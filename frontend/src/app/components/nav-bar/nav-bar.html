@@ -1,4 +1,112 @@
-<nav>
-    <a routerLink="/"> Home Page </a>
-    <a routerLink="/request-service"> Request Service </a>    
+<nav
+  class="fixed top-0 left-0 right-0 z-50 transition-shadow duration-300"
+  [class.shadow-lg]="isScrolled"
+  style="background-color: rgb(var(--color-primary));"
+>
+  <div class="px-2 sm:px-4" style="max-width: var(--container-width);">
+    <div class="flex items-center justify-between h-16 md:h-20">
+
+      <!-- Logo -->
+      <a routerLink="/" class="flex items-center gap-2 group select-none">
+        <!-- Pipe icon -->
+        <svg class="w-8 h-8 flex-shrink-0" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="13" width="28" height="6" rx="3" fill="rgb(var(--color-accent))"/>
+          <rect x="11" y="4" width="6" height="10" rx="2" fill="rgb(var(--color-accent))"/>
+          <rect x="15" y="18" width="6" height="10" rx="2" fill="rgb(var(--color-accent))" transform="rotate(0 15 18)"/>
+        </svg>
+        <!-- Wordmark -->
+        <span class="flex flex-col leading-none">
+          <span
+            class="text-xs font-medium tracking-[0.2em] uppercase"
+            style="color: rgb(var(--color-muted)); font-family: 'Inter', sans-serif;"
+          >Plumbing By</span>
+          <span
+            class="text-2xl font-semibold tracking-wide uppercase"
+            style="color: white; font-family: 'Oswald', sans-serif; letter-spacing: 0.08em;"
+          >Hart</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="hidden md:flex items-center gap-1" role="list">
+        <li>
+          <a
+            routerLink="/"
+            routerLinkActive="nav-active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="nav-link relative px-4 py-2 text-sm font-medium tracking-wide uppercase transition-colors duration-200"
+            style="font-family: 'Inter', sans-serif; letter-spacing: 0.06em;"
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/request-service"
+            routerLinkActive="nav-active"
+            class="nav-link relative px-4 py-2 text-sm font-medium tracking-wide uppercase transition-colors duration-200"
+            style="font-family: 'Inter', sans-serif; letter-spacing: 0.06em;"
+          >
+            Request Service
+          </a>
+        </li>
+      </ul>
+
+      <!-- Mobile Hamburger -->
+      <button
+        class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 rounded focus:outline-none focus:ring-2 focus:ring-offset-1"
+        style="focus-ring-color: rgb(var(--color-accent));"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen"
+        aria-label="Toggle navigation menu"
+      >
+        <span
+          class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center"
+          [class.rotate-45]="menuOpen"
+          [class.translate-y-2]="menuOpen"
+        ></span>
+        <span
+          class="block w-6 h-0.5 bg-white transition-all duration-300"
+          [class.opacity-0]="menuOpen"
+        ></span>
+        <span
+          class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center"
+          [class.-rotate-45]="menuOpen"
+          [class.-translate-y-2]="menuOpen"
+        ></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div
+    class="md:hidden overflow-hidden transition-all duration-300"
+    [style.max-height]="menuOpen ? '400px' : '0px'"
+    style="background-color: rgb(var(--color-secondary));"
+  >
+    <ul class="flex flex-col px-4 py-3 gap-1" role="list">
+      <li>
+        <a
+          routerLink="/"
+          routerLinkActive="mobile-nav-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMenu()"
+          class="mobile-nav-link block px-4 py-3 text-sm font-medium uppercase tracking-wider text-white border-l-4 border-transparent transition-all duration-200"
+          style="font-family: 'Inter', sans-serif;"
+        >Home</a>
+      </li>
+      <li>
+        <a
+          routerLink="/request-service"
+          routerLinkActive="mobile-nav-active"
+          (click)="closeMenu()"
+          class="mobile-nav-link block px-4 py-3 text-sm font-medium uppercase tracking-wider text-white border-l-4 border-transparent transition-all duration-200"
+          style="font-family: 'Inter', sans-serif;"
+        >Request Service</a>
+      </li>
+    </ul>
+  </div>
 </nav>
+
+<!-- Spacer so page content doesn't hide under fixed nav -->
+<div class="h-16 md:h-20"></div>
